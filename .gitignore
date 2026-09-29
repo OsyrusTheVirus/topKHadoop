@@ -25,7 +25,5 @@ replay_pid*
 
 /target
 *.bz2
-Dockerfile
-*.ps1
 /output
 /intermediate
