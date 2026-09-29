@@ -25,5 +25,5 @@ replay_pid*
 
 /target
 *.bz2
-/output
-/intermediate
+/*output
+/*intermediate

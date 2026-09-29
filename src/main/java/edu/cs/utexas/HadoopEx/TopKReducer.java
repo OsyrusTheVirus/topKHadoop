@@ -17,15 +17,7 @@ public class TopKReducer extends  Reducer<Text, IntWritable, Text, IntWritable> 
 
     private PriorityQueue<WordAndCount> pq = new PriorityQueue<WordAndCount>(10);;
 
-
     private Logger logger = Logger.getLogger(TopKReducer.class);
-
-
-//    public void setup(Context context) {
-//
-//        pq = new PriorityQueue<WordAndCount>(10);
-//    }
-
 
     /**
      * Takes in the topK from each mapper and calculates the overall topK
