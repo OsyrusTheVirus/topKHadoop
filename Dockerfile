@@ -8,8 +8,7 @@ RUN apt-get update
 RUN java -version
 RUN mvn -version
 
-# work directory
-WORKDIR /hadoop
+
 
 # Bash shell
 CMD ["bash"]

@@ -12,6 +12,11 @@ switch($task) {
         docker build -t $IMAGE $PWD 
     }
     "run"       {
+        Write-Host "Make sure you downloaded flights.csv.bz2"
+        Write-Host "Download at https://www.cs.utexas.edu/~kiat/datasets/flights.csv.bz2"
+        Write-Host "When running, do the following commands: "
+        Write-Host "% mvn clean package"
+        Write-Host "% java -jar target/topKHadoop-0.1-SNAPSHOT-jar-with-dependencies.jar flights.csv.bz2 intermediate output "
         docker run --rm -it -v "${PWD}:/usr/${IMAGE}" -w /usr/$IMAGE $IMAGE
         }
     "clean"     {docker rmi $IMAGE}
