@@ -9,21 +9,17 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class DelayRatioTopKMapper extends Mapper<Text, Text, Text, FloatWritable>{
     private final static int TOP_K = 3;
-    private PriorityQueue<FlightAndDelayRatio> pq = new PriorityQueue<>(TOP_K);
+    private PriorityQueue<DelayRatioAndCount> pq = new PriorityQueue<>(TOP_K);
 
-    @Override
-    protected void map(Text key, Text value, Mapper<Text, Text, Text, FloatWritable>.Context context)
-            throws IOException, InterruptedException {
+    public void map(Text key, Text value, Context context) throws IOException, InterruptedException {
         float total_delay = Float.parseFloat(value.toString());
-        pq.add(new FlightAndDelayRatio(new Text(key), new FloatWritable(total_delay)));
+        pq.add(new DelayRatioAndCount(new Text(key), new FloatWritable(total_delay)));
         if(pq.size() > TOP_K) pq.poll();
     }
 
-    @Override
-    protected void cleanup(Mapper<Text, Text, Text, FloatWritable>.Context context)
-            throws IOException, InterruptedException {
+    public void cleanup(Context context) throws IOException, InterruptedException {
         while(!pq.isEmpty()) {
-            FlightAndDelayRatio flight_and_delay_ratio = pq.poll();
+            DelayRatioAndCount flight_and_delay_ratio = pq.poll();
             context.write(flight_and_delay_ratio.getFlight(), flight_and_delay_ratio.getTotalDelay());
         }
     }

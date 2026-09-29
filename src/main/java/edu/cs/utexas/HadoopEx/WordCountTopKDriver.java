@@ -8,7 +8,6 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.join.TupleWritable;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -104,7 +103,7 @@ public class WordCountTopKDriver extends Configured implements Tool {
 
 			// specify output types
 			job3.setOutputKeyClass(Text.class);
-			job3.setOutputValueClass(TupleWritable.class);
+			job3.setOutputValueClass(DelayAndCountWritable.class);
 
 			// specify input and output directories
 			FileInputFormat.addInputPath(job3, new Path(args[0]));

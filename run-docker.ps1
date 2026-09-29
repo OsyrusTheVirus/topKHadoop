@@ -16,15 +16,15 @@ switch($task) {
         Write-Host "Download at https://www.cs.utexas.edu/~kiat/datasets/flights.csv.bz2"
         Write-Host "When running, do the following commands: "
         Write-Host "% mvn clean package"
-        Write-Host "% java -jar target/topKHadoop-0.1-SNAPSHOT-jar-with-dependencies.jar flights.csv.bz2 one_intermediate one_output two_intermediate two_output "
+        Write-Host "% java -jar target/topKHadoop-0.1-SNAPSHOT-jar-with-dependencies.jar flights.csv.bz2 intermediate1 output1 intermediate2 output2 "
         docker run --rm -it -v "${PWD}:/usr/${IMAGE}" -w /usr/$IMAGE $IMAGE
         }
     "clean"     {
         docker rmi -f $IMAGE
-        Remove-Item -Path ".\taskoneintr" -Recurse -Force
-        Remove-Item -Path ".\taskoneoutput" -Recurse -Force
-        Remove-Item -Path ".\tasktwointr" -Recurse -Force
-        Remove-Item -Path ".\tasktwooutput" -Recurse -Force
+        Remove-Item -Path ".\intermediate1" -Recurse -Force
+        Remove-Item -Path ".\output1" -Recurse -Force
+        Remove-Item -Path ".\intermediate2" -Recurse -Force
+        Remove-Item -Path ".\output2" -Recurse -Force
         }
     "images"    {docker images}
     default     { 
