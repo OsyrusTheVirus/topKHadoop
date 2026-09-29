@@ -2,7 +2,6 @@ package edu.cs.utexas.HadoopEx;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.log4j.Logger;
 
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Iterator;
 
 
 
