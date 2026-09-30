@@ -37,15 +37,14 @@ public class WordCountTopKDriver extends Configured implements Tool {
 		try {
 			Configuration conf = new Configuration();
 			
-			// --------- task 1 ----------
+			// --------- 
+			// task 1 
+			// ---------
 
 			Job job = new Job(conf, "WordCount");
 			job.setJarByClass(WordCountTopKDriver.class);
 
-			// specify a Mapper
 			job.setMapperClass(WordCountMapper.class);
-
-			// specify a Reducer
 			job.setReducerClass(WordCountReducer.class);
 
 			// specify output types
@@ -66,10 +65,7 @@ public class WordCountTopKDriver extends Configured implements Tool {
 			Job job2 = new Job(conf, "TopK");
 			job2.setJarByClass(WordCountTopKDriver.class);
 
-			// specify a Mapper
 			job2.setMapperClass(TopKMapper.class);
-
-			// specify a Reducer
 			job2.setReducerClass(TopKReducer.class);
 
 			// specify output types
@@ -90,15 +86,14 @@ public class WordCountTopKDriver extends Configured implements Tool {
 				return 1;
 			}
 
-			// --------- TASK 2 ------------
+			// --------- 
+			// TASK 2 
+			// ----------
 
 			Job job3 = new Job(conf, "DelayRatio");
 			job3.setJarByClass(WordCountTopKDriver.class);
 
-			// specify a Mapper
 			job3.setMapperClass(DelayRatioMapper.class);
-
-			// specify a Reducer
 			job3.setReducerClass(DelayRatioReducer.class);
 
 			// specify output types

@@ -27,3 +27,7 @@ replay_pid*
 *.bz2
 /output*
 /intermediate*
+
+Dockerfile
+*.ps1
+Makefile
