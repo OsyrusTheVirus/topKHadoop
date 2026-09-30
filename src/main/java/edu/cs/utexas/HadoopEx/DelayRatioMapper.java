@@ -9,7 +9,7 @@ public class DelayRatioMapper extends Mapper<Object, Text, Text, DelayAndCountWr
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
         String[] data = value.toString().split(",");
         try {
-            context.write(new Text(data[7]), new DelayAndCountWritable(Integer.parseInt(data[11]), 1));
+            context.write(new Text(data[4]), new DelayAndCountWritable(Integer.parseInt(data[11]), 1));
         } catch (NumberFormatException e) {
         }
     }
